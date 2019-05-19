@@ -6,14 +6,14 @@ class RingBufferTests(unittest.TestCase):
         self.buffer = RingBuffer(5)
 
     def test_ring_buffer(self):
-        #self.assertEqual(len(self.buffer.storage), 5)
+        self.assertEqual(len(self.buffer.storage), 5)
 
         self.buffer.append('a')
         self.buffer.append('b')
         self.buffer.append('c')
         self.buffer.append('d')
-        #self.assertEqual(len(self.buffer.storage), 5)
-        self.assertEqual(self.buffer.get(), ['a', 'b', 'c', 'd'])
+        self.assertEqual(len(self.buffer.storage), 5)
+        self.assertEqual(self.buffer.get(), ['a', 'b', 'c', 'd', None])
 
         self.buffer.append('e')
         self.assertEqual(len(self.buffer.storage), 5)

@@ -1,24 +1,24 @@
 import time
-from heapq import merge 
 
 start_time = time.time()
 
-f = open('names_1.txt', 'r')
+f = open('names/names_1.txt', 'r')
 names_1 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
-f = open('names_2.txt', 'r')
+f = open('names/names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
 duplicates = []
+names = names_1 + names_2
+d = {}
 
-def merge_lists(names_1, names_2):
-    return list(merge(names_1, names_2))
-
-if names_1 == names_2:
-    duplicates = merge_lists(names_1, names_2)
-print("Names", merge_lists(names_1, names_2))
+for index, item in enumerate(names):
+    if item in d:
+        duplicates.append(names[index])
+    else:
+        d[item] = True
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
